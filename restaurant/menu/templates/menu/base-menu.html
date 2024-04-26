@@ -4,11 +4,32 @@
 
 {% block content %}
     <div id="features">
+        <h1 align="center">Горячие блюда</h1><br>
         {% for el in board  %}
+        {% if el.category == "Hot" %}
         <figure>
             <img src= "{{el.image.url}}">
 			<figcaption>{{el.title}}</figcaption>
         </figure>
+        {% endif %}
+        {% endfor %}
+        <br><h1 align="center">Холодные блюда</h1><br>
+        {% for el in board  %}
+        {% if el.category == "Cold" %}
+        <figure>
+            <img src= "{{el.image.url}}">
+			<figcaption>{{el.title}}</figcaption>
+        </figure>
+        {% endif %}
+        {% endfor %}
+        <br><h1 align="center">Напитки</h1><br>
+        {% for el in board  %}
+        {% if el.category == "Beverages" %}
+        <figure>
+            <img src= "{{el.image.url}}">
+			<figcaption>{{el.title}}</figcaption>
+        </figure>
+        {% endif %}
         {% endfor %}
     </div>
 {% endblock content %}
