@@ -1,0 +1,14 @@
+{% extends 'menu/layout.html' %}
+
+{% block title %} Main {% endblock title %}
+
+{% block content %}
+    <div id="features">
+        {% for el in board  %}
+        <figure>
+            <img src= "{{el.image.url}}">
+			<figcaption>{{el.title}}</figcaption>
+        </figure>
+        {% endfor %}
+    </div>
+{% endblock content %}

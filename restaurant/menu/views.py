@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+from .models import Dish
 
 def index(request):
-    return render(request, 'menu/index.html')
+    board = Dish.objects.all
+    return render(request, 'menu/base-menu.html', {'board': board})
