@@ -1,0 +1,46 @@
+{% extends 'menu/layout.html' %}
+
+{% block title %} Main {% endblock title %}
+
+{% block content %}
+    <div id="features">
+        <a name="Hot">
+            <h1 align="center">Горячие блюда</h1>
+        </a>
+        <ul class="cats">
+        {% for el in board  %}
+        {% if el.category == "Hot" %}
+        <li>
+            <figure>
+                <img src= "{{el.image.url}}">
+                <figcaption>{{el.title}}</figcaption>
+                <a href="{% url 'basket_add' el.id %}"><button class="btn btn-secondary">Добавить в корзину</button></a>
+            </figure>
+        </li>
+        {% endif %}
+        {% endfor %}
+        </ul>
+        <a name="Cold">
+            <h1 align="center">Холодные блюда</h1>
+        </a>
+        {% for el in board  %}
+        {% if el.category == "Cold" %}
+        <figure>
+            <img src= "{{el.image.url}}">
+			<figcaption>{{el.title}}</figcaption>
+        </figure>
+        {% endif %}
+        {% endfor %}
+        <a name="Beverages">
+            <br><h1 align="center">Напитки</h1><br>
+        </a>
+        {% for el in board  %}
+        {% if el.category == "Beverages" %}
+        <figure>
+            <img src= "{{el.image.url}}">
+			<figcaption>{{el.title}}</figcaption>
+        </figure>
+        {% endif %}
+        {% endfor %}
+    </div>
+{% endblock content %}

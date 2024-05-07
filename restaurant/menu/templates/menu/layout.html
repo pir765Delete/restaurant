@@ -17,11 +17,12 @@
         <span class="logo_low">оооооооооооо </span>
         <h3>Меню</h3>
         <ul>
-            <a href="#"><li>Горячие блюда</li></a>
-            <a href="#"><li>Холодные блюда</li></a>
-            <a href="#"><li>Напитки</li></a>
-            <a href="#"><li>Корзина</li></a>
-            <a href="#"><li><i class="bi bi-telephone"></i> Контакты</li></a>
+            <a href="#Hot"><li>Горячие блюда</li></a>
+            <a href="#Cold"><li>Холодные блюда</li></a>
+            <a href="#Beverages"><li>Напитки</li></a>
+            <a href="{% url 'basket' %}"><li>Корзина</li></a>
+            <a href="{% url 'order' %}"><li>Заказы</li></a>
+            <a href="{% url 'users:login' %}"><li>Войти </li></a>
 
         </ul>
     </aside>
