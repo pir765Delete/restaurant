@@ -1,18 +1,24 @@
 
-
 body {
     background: #5F9EA0;
 }
 
 aside {
+    position: fixed;
     float: left;
     background: #181818;
     width: 30%;
     padding: 2.5%;
-    height: 180vh;
+    height: 300%;
     color: #fff;
     border-right: 5px solid #4d4d4d
 }
+
+main {
+    display: flex;
+    justify-content: right;
+}
+
 
 aside img {
     width: 80px;
@@ -26,6 +32,18 @@ aside .logo {
     position: relative;
 
 }
+
+.cats {
+  display: grid;
+  grid-template-columns: 280px 280px 280px;
+  grid-template-rows: 280px 280px;
+
+}
+
+.cats li {
+    list-style-type:none;
+}
+
 aside .logo_low {
     font-size: 25px;
     margin-left: 10px;
@@ -59,15 +77,15 @@ aside ul li:hover, aside ul a:hover {
 }
 
 #features {
-    column-width: 320px;
-    column-gap: 15px;
-    width: 70%;
-    max-width: 1000px;
 
 }
 
 div#features figure {
-  background: #fefefe;
+  border-radius: 5%;
+  width: 260px;
+  height: 260px;
+  background: #454545;
+  overflow: hidden;
   border: 2px solid #fcfcfc;
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
   margin: 0 2px 15px;
@@ -76,46 +94,33 @@ div#features figure {
   column-break-inside: avoid;
 }
 div#features figure img {
-  width: 100%;
-  height: auto;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 15px;
-  margin-bottom: 5px;
+  width: auto;
+  height: 100%;
+  margin: -67px 0 0 0;
 }
+
 
 div#features figure figcaption {
   font-size: 0.9rem;
-  color: #444;
+  color: #fcfcfc;
   line-height: 1.5;
+  text-align:center;
+
 }
 
-div#features small {
-  font-size: 1rem;
-  float: right;
-  text-transform: uppercase;
-  color: #aaa;
+div#features figure button, div#features figure a {
+    margin: 0 auto;
+    display: block;
+    text-decoration: none;
 }
 
-div#features small a {
-  color: #666;
-  text-decoration: none;
-  transition: 0.4s color;
-}
 
-div#features:hover figure:not(:hover) {
-  opacity: 0.4;
-}
 
-@media screen and (max-width: 750px) {
-  #features {
-    column-gap: 0px;
-  }
-  #features figure {
-    width: 100%;
-  }
-}
 
-main . h1 {font-size: 100px; text-align: center;}
+
+
+
+div#features h1 {font-size: 100px; text-align: center; width: 100%}
 main .features p {max-width: 400px; margin: 20px auto}
 
 main .alert-warning {
@@ -124,8 +129,4 @@ main .alert-warning {
     width: 450px;
     margin: 20px 20%;
     text-align: left;
-}
-
-main img {
-
 }

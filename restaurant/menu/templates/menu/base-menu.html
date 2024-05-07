@@ -4,17 +4,25 @@
 
 {% block content %}
     <div id="features">
-        <h1 align="center">Горячие блюда</h1><br>
+        <a name="Hot">
+            <h1 align="center">Горячие блюда</h1>
+        </a>
+        <ul class="cats">
         {% for el in board  %}
         {% if el.category == "Hot" %}
-        <figure>
-            <img src= "{{el.image.url}}">
-			<figcaption>{{el.title}}</figcaption>
-            <a href="#"><button class="btn btn-warning">Добавить в корзину</button></a>
-        </figure>
+        <li>
+            <figure>
+                <img src= "{{el.image.url}}">
+                <figcaption>{{el.title}}</figcaption>
+                <a href="{% url 'basket_add' el.id %}"><button class="btn btn-secondary">Добавить в корзину</button></a>
+            </figure>
+        </li>
         {% endif %}
         {% endfor %}
-        <br><h1 align="center">Холодные блюда</h1><br>
+        </ul>
+        <a name="Cold">
+            <h1 align="center">Холодные блюда</h1>
+        </a>
         {% for el in board  %}
         {% if el.category == "Cold" %}
         <figure>
@@ -23,7 +31,9 @@
         </figure>
         {% endif %}
         {% endfor %}
-        <br><h1 align="center">Напитки</h1><br>
+        <a name="Beverages">
+            <br><h1 align="center">Напитки</h1><br>
+        </a>
         {% for el in board  %}
         {% if el.category == "Beverages" %}
         <figure>

@@ -1,0 +1,114 @@
+{% extends 'users/base.html' %}
+{% block title %} Basket {% endblock title %}
+
+{% block content %}
+    {% if orders %}
+            <div class="col-lg-5">
+                <h4 class="mt-3 mb-3 text-center">
+                    Заказы
+                </h4>
+                {% for order in orders %}
+                    {% if order.status != 'Выполнено' %}
+                        {% if flag == "Admins" or flag == "Waiters" %}
+                            {% if order.status != 'Готовится' %}
+                            <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Заказ №{{ order.id }}</h5>
+                        <p class="card-text">{{ order.status }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-light">
+                            <div class="row text-center">
+                                <div class="col-lg-4">
+                                    {{ order.price }} руб.
+                                </div>
+                                <div>
+                                    <a class="btn btn-success btn-lg float-center" href="{% url 'order_pay' order.id %}">Оплатить заказ</a>
+                                    <a href="{% url 'order_next_step' order.id %}"><button class="btn btn-warning">Передать на кухню</button></a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                            {% endif %}
+                        {% elif flag == "Cooks" %}
+                            {% if order.status == 'Готовится' %}
+                              <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Заказ №{{ order.id }}</h5>
+                        <p class="card-text">{{ order.status }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-light">
+                            <div class="row text-center">
+                                <div class="col-lg-4">
+                                    {{ order.price }} руб.
+                                </div>
+                                <div>
+                                    <a href="{% url 'order_return_step' order.id %}"><button class="btn btn-warning">Заказ выполнен</button></a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                            {% endif %}
+                        {% elif flag == "Users" %}
+                            <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Заказ №{{ order.id }}</h5>
+                        <p class="card-text">{{ order.status }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-light">
+                            <div class="row text-center">
+                                <div class="col-lg-4">
+                                    {{ order.price }} руб.
+                                </div>
+                                <div>
+                                    <a class="btn btn-success btn-lg float-center" href="{% url 'order_pay' order.id %}">Оплатить заказ</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                        {% endif %}
+                    {% else %}
+
+                    {% endif %}
+                {% endfor %}
+            </div>
+    {% if flag == "Bookers" %}
+    <div class="col-lg-5">
+        {% for order in orders %}
+            {% if order.status == 'Выполнено' %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Заказ №{{ order.id }}</h5>
+                        <p class="card-text">{{ order.status }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-light">
+                            <div class="row text-center">
+                                <div class="col-lg-4">
+                                    {{ order.price }} руб.
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            {% endif %}
+        {% endfor %}
+        <div class="card mb-3">
+            <div class="card-footer">
+                <p class="float-left">Итого</p>
+                <h4 class="float-right">{{ orders.total_sum }} руб.</h4>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% else %}
+        <h4 class="mt-3 mb-3 text-center ">
+            Список заказов пуст
+        </h4>
+    {% endif %}
+{% endblock content %}
